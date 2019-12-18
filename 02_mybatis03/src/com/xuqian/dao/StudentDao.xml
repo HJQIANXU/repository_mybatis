@@ -150,5 +150,66 @@
 
     </select>
 
+    <!--
+        使用sql标签制作sql片段
+        sql片段的作用是用来代替sql语句中的代码
+        如果你的mapper映射文件中的sql语句某些代码出现了大量的重复，我们可以使用sql片段来代替他们
+    -->
+
+    <sql id="sql1">
+        select * from t_student
+    </sql>
+
+    <select id="select16" resultType="Student">
+        <include refid="sql1" /> where id=#{id}
+    </select>
+
+    <select id="select17" resultType="Map">
+        select
+
+        s.name as sname,
+        c.name as cname
+
+        from t_student s
+        join t_classroom c
+        on s.classroomId=c.id
+    </select>
+
+    <select id="select18" resultType="com.xuqian.vo.StudentAndClassroomVo">
+
+        select
+
+        s.id sid,
+        s.name sname,
+        s.age sage,
+        s.address saddress,
+        c.id cid,
+        c.name cname
+
+        from t_student s
+        join t_classroom c
+        on s.classroomId=c.id
+
+    </select>
+
+    <select id="select19" resultType="com.xuqian.vo.StudentAndClassroomVo">
+
+        select
+
+        s.id sid,
+        s.name sname,
+        s.age sage,
+        s.address saddress,
+        c.id cid,
+        c.name cname
+
+        from t_student s
+        join t_classroom c
+        on s.classroomId=c.id
+
+        where s.name like '%' #{sname} '%'
+
+    </select>
+
 </mapper>
 

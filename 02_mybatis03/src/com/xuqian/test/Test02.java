@@ -3,6 +3,7 @@ package com.xuqian.test;
 import com.xuqian.dao.StudentDao;
 import com.xuqian.domain.Student;
 import com.xuqian.util.SqlSessionUtil;
+import com.xuqian.vo.StudentAndClassroomVo;
 
 import java.util.HashMap;
 import java.util.List;
@@ -125,11 +126,40 @@ public class Test02 {
         }*/
 
         //测试：动态sql foreach标签
-        String strArr[] = {"A0001","A0002","A0003"};
+        /*String strArr[] = {"A0001","A0002","A0003"};
         List<Student> studentList = studentDao.select15(strArr);
         for (Student s : studentList){
             System.out.println(s);
+        }*/
+
+        //测试 sql片段
+        /*Student student = studentDao.select16("A0001");
+        System.out.println(student);*/
+
+        //测试：多表联查
+        /*List<Map<String,Object>> mapList = studentDao.select17();
+        for (Map<String,Object> map : mapList){
+
+            Set<String> set = map.keySet();
+            for (String key : set){
+                System.out.println(key + " : " + map.get(key));
+            }
+            System.out.println("-----------");
+        }*/
+
+        //测试 vo
+        /*List<StudentAndClassroomVo> voList = studentDao.select18();
+        for (StudentAndClassroomVo vo : voList){
+
+            System.out.println(vo);
+        }*/
+
+        List<StudentAndClassroomVo> voList = studentDao.select19("z");
+        for (StudentAndClassroomVo vo : voList){
+
+            System.out.println(vo);
         }
+
     }
 
 }

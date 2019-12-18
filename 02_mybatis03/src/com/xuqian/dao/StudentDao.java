@@ -1,6 +1,7 @@
 package com.xuqian.dao;
 
 import com.xuqian.domain.Student;
+import com.xuqian.vo.StudentAndClassroomVo;
 
 import java.util.List;
 import java.util.Map;
@@ -38,6 +39,14 @@ public interface StudentDao {
     List<Student> select14(Student student);
 
     List<Student> select15(String[] strArr);
+
+    Student select16(String a0001);
+
+    List<Map<String,Object>> select17();
+
+    List<StudentAndClassroomVo> select18();
+
+    List<StudentAndClassroomVo> select19(String z);
 
 
     //List<Student> select3(String wyf, int i);
